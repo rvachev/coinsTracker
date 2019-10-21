@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.AdapterView
 import com.example.coinstracker.R
 import com.example.coinstracker.adapters.GridLayoutAdapter
+import com.example.coinstracker.modules.CoinsRepository
 import com.example.coinstracker.presenters.MainScreenPresenter
 import com.example.coinstracker.views.MainScreenView
 import com.google.android.material.snackbar.Snackbar
@@ -37,6 +38,9 @@ class MainActivity : MvpAppCompatActivity(), MainScreenView {
             val coinCost = view.coinCost.text.toString()
             mainScreenPresenter.printSmt(message = "$coinName costs $coinCost", view = view)
         }
+
+        val repository = CoinsRepository()
+        repository.getCoins()
     }
 
     override fun onSuccess(message: String, clickingView: View) {
